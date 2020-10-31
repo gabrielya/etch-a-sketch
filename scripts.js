@@ -11,3 +11,20 @@ function makeRows(rows, cols) {
 
 makeRows(16, 16);
 
+let gridItem = document.querySelectorAll(".grid-item");
+
+gridItem.forEach((cell) => {
+    cell.addEventListener('mouseover', () => {
+        cell.style.background="purple";
+    });
+});
+
+const resetButton = document.getElementById("reset-button");
+
+const promptv = alert(prompt("Enter how many rows and colums you want.",
+    "rows: ", "cols: "));
+
+
+resetButton.onclick = () => gridItem.forEach((cell) => {
+        cell.style.background="none";
+});
