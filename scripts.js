@@ -29,15 +29,18 @@ colorTheGrid();
 const resetButton = document.querySelector("#reset-button");
 
 resetButton.onclick = () => {
-  do {
-    let promptR = prompt("Enter how many rows and cols you want.");
-  } while (parseInt(promptR) > 100);
+  let promptR = prompt("Enter how many rows and cols you want.");
+
+  let userRows = parseInt(promptR, 10);
+
+  while (userRows >= 100) {
+    promptR = prompt("Please enter a number <= to 100.");
+    userRows = parseInt(promptR, 10);
+  }
 
   gridItem.forEach((cell) => {
     cell.remove();
   });
-
-  let userRows = parseInt(promptR, 10);
 
   makeRows(userRows, userRows);
 
