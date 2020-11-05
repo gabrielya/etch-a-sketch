@@ -12,6 +12,11 @@ function makeRows(rows, cols) {
   }
 }
 
+function isNumeric(str) {
+  if (typeof str != "string") return false;
+  return !isNaN(str) && !isNaN(parseFloat(str));
+}
+
 makeRows(16, 16);
 
 let gridItem = document.querySelectorAll(".grid-item");
@@ -33,7 +38,7 @@ resetButton.onclick = () => {
 
   let userRows = parseInt(promptR, 10);
 
-  while (userRows >= 100) {
+  while (!isNumeric(promptR) || userRows > 100) {
     promptR = prompt("Please enter a number <= to 100.");
     userRows = parseInt(promptR, 10);
   }
